@@ -1,0 +1,25 @@
+{
+  "name": "collaborative-playlist-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViniciusVaz/collaborative-playlist-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViniciusVaz/collaborative-playlist-api/issues"
+  },
+  "homepage": "https://github.com/ViniciusVaz/collaborative-playlist-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}

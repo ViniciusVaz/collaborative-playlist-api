@@ -3,6 +3,6 @@ module.exports = (application) => {
     application.app.controllers.index.helloWorld(application, req, res)
   })
   application.post('/authDeezer', (req, res) => {
-    application.app.controllers.index.authDeezer(application, req, res)
+    application.app.controllers.deezer.auth(application, req, res)
   })
 }

@@ -1,12 +1,8 @@
-const baseUrls = require('../constants/baseUrls')
-const { capitalize } = require('../utils/helpers')
 const request = require('request')
 
 module.exports = {
   getPlayList: (app, req, res) => {
-    const player = req.body.player
-    const keyFormatted = `baseUrl${capitalize(player)}`
-    const baseApiUrl = baseUrls[keyFormatted]
+    const baseApiUrl = 'https://api.spotify.com/v1'
     
     const token = req.headers.authorization
 
@@ -28,7 +24,10 @@ module.exports = {
       const { id } = bodyJson
 
       request({url: `${baseApiUrl}/users/${id}/playlists`, ...options }, (err, resp, body) => {
-        res.send(JSON.parse(body))
+        res.send({
+          userId: id,
+          ...body,
+        })
       })
     })
   }

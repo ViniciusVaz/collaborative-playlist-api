@@ -1,4 +1,4 @@
 module.exports = {
-  baseUrlSpotify: 'https://api.spotify.com/v1',
+  baseUrlSpotify: '',
   baseUrlDeezer: 'deezer',
 }

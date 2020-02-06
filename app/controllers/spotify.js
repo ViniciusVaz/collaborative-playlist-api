@@ -17,6 +17,14 @@ module.exports = {
     request({url: `${baseApiUrl}/me/playlists`, ...options }, (err, resp, body) => {
       const bodyJson = JSON.parse(body)
 
+      if (bodyJson.error && bodyJson.error.status === 401) {
+        res.status(401).send({
+          error: 401,
+          message: 'Token expired!'
+        })
+
+        return
+      } 
       const mapperValue = bodyJson.items.map(item => {
         const data = {
           id: item.id,
@@ -26,7 +34,6 @@ module.exports = {
 
         return data
       })
-      
 
       res.send(mapperValue)
     })

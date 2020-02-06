@@ -24,6 +24,8 @@ module.exports = {
     const { token } = req.body
 
     request(`${baseApiUrl}/user/me/playlists?access_token=${token}`, (err, resp, body) => {
+   
+      
       const bodyJson = JSON.parse(body)
 
       const mapperValue = bodyJson.data.map(item => {

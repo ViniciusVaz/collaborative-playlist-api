@@ -11,16 +11,9 @@ module.exports = {
       const accessToken = body.match(/(?<=access_token=).*(?=&token_type|&expires)/gm)
 
       if(!!accessToken) {
-        request(`${baseApiUrl}/user/me?access_token=${accessToken[0]}`, (err, resp, body) => {
-          const bodyJson = JSON.parse(body)
-          const { id: userId } = bodyJson
-  
           res.send({
-            userId,
             accessToken: accessToken[0]
           })
-  
-        })
       } else {
         res.err('token')
       }
@@ -31,9 +24,19 @@ module.exports = {
     const { token } = req.body
 
     request(`${baseApiUrl}/user/me/playlists?access_token=${token}`, (err, resp, body) => {
-      const data = JSON.parse(body).data
+      const bodyJson = JSON.parse(body)
+
+      const mapperValue = bodyJson.data.map(item => {
+        const data = {
+          id: item.id.toString(),
+          name: item.title,
+          image: item.picture_big
+        }
+
+        return data
+      })
       
-      res.send(data)
+      res.send(mapperValue)
     })
   }
 }

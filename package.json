@@ -19,7 +19,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "consign": "^0.1.6",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "request": "^2.88.0",
     "slugify": "^1.3.6"
   }
